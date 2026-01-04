@@ -1,0 +1,1 @@
+class_name DependentStat extends BaseStat

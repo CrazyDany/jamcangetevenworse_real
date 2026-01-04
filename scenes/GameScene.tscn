@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://e65k65svirf1"]
+
+[ext_resource type="Script" uid="uid://b45qeq6ud5wse" path="res://common/game_manager.gd" id="1_18ig4"]
+[ext_resource type="Script" uid="uid://r5w3nx2i1qty" path="res://common/entity.gd" id="2_7s5hy"]
+[ext_resource type="Script" uid="uid://dhjrcv8mccmqo" path="res://common/components/stats_component/stats_component.gd" id="3_xs4ih"]
+[ext_resource type="Script" uid="uid://mfyw85oijhdi" path="res://common/components/interact_component/interact_component.gd" id="4_6ytau"]
+[ext_resource type="PackedScene" uid="uid://drls3qeuy7oeo" path="res://assets/room/Bedroom_room.glb" id="5_7s5hy"]
+[ext_resource type="Script" uid="uid://dgrxfqxsdypxf" path="res://common/controller.gd" id="6_xs4ih"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k77ap"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k77ap"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_haeiw"]
+
+[node name="GameScene" type="Node3D"]
+script = ExtResource("1_18ig4")
+
+[node name="PlayerEntity" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051, -0.47238174, 1.3020264)
+script = ExtResource("2_7s5hy")
+entity_id = "g_player"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="StatsComponent" type="Node" parent="PlayerEntity"]
+script = ExtResource("3_xs4ih")
+metadata/_custom_type_script = "uid://dhjrcv8mccmqo"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerEntity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_k77ap")
+
+[node name="Camera3D" type="Camera3D" parent="PlayerEntity"]
+transform = Transform3D(0.9998272, 0.0006447586, -0.01857805, 0.00072979496, 0.9972664, 0.0738864, 0.018574918, -0.0738872, 0.9970937, 0.00037759542, 1.4343956, -0.55018234)
+fov = 73.133385
+
+[node name="CubeEntity" type="Node3D" parent="."]
+transform = Transform3D(0.7844193, 0, 0.6202309, 0, 1, 0, -0.6202309, 0, 0.7844193, 0.004561901, 0.38245416, -2.3796892)
+script = ExtResource("2_7s5hy")
+entity_id = "g_cube"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CubeEntity"]
+mesh = SubResource("BoxMesh_k77ap")
+
+[node name="Area3D" type="Area3D" parent="CubeEntity"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubeEntity/Area3D"]
+shape = SubResource("BoxShape3D_haeiw")
+
+[node name="InteractComponent" type="Node" parent="CubeEntity" node_paths=PackedStringArray("interact_area")]
+script = ExtResource("4_6ytau")
+interact_area = NodePath("../Area3D")
+metadata/_custom_type_script = "uid://mfyw85oijhdi"
+
+[node name="Entity" type="Node3D" parent="."]
+script = ExtResource("2_7s5hy")
+entity_id = "g_lamp"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Entity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -1)
+omni_range = 7.645
+omni_attenuation = 0.99
+
+[node name="Bedroom_room" parent="." instance=ExtResource("5_7s5hy")]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("6_xs4ih")
