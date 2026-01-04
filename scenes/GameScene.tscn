@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://e65k65svirf1"]
+[gd_scene load_steps=14 format=3 uid="uid://e65k65svirf1"]
 
 [ext_resource type="Script" uid="uid://b45qeq6ud5wse" path="res://common/game_manager.gd" id="1_18ig4"]
 [ext_resource type="Script" uid="uid://r5w3nx2i1qty" path="res://common/entity.gd" id="2_7s5hy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://mfyw85oijhdi" path="res://common/components/interact_component/interact_component.gd" id="4_6ytau"]
 [ext_resource type="PackedScene" uid="uid://drls3qeuy7oeo" path="res://assets/room/Bedroom_room.glb" id="5_7s5hy"]
 [ext_resource type="Script" uid="uid://dgrxfqxsdypxf" path="res://common/controller.gd" id="6_xs4ih"]
+[ext_resource type="Texture2D" uid="uid://ct86uqdmjvpj6" path="res://assets/room/xpbg.png" id="7_6ytau"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k77ap"]
 
@@ -13,11 +14,43 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_haeiw"]
 
+[sub_resource type="Environment" id="Environment_xs4ih"]
+background_mode = 2
+background_energy_multiplier = 6.43
+ambient_light_source = 2
+ambient_light_color = Color(0.930127, 0.8409155, 0.79079556, 1)
+ambient_light_energy = 1.5
+tonemap_exposure = 0.17
+sdfgi_bounce_feedback = 1.07
+sdfgi_min_cell_size = 9.765625e-05
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.05
+glow_strength = 1.68
+fog_enabled = true
+fog_light_color = Color(0.42736727, 0.46139115, 0.5143227, 1)
+fog_light_energy = 0.0
+fog_sun_scatter = 0.17
+fog_density = 0.0105
+fog_height = -107.79
+fog_height_density = 4.3789
+adjustment_enabled = true
+adjustment_brightness = 0.82
+adjustment_contrast = 2.09
+adjustment_saturation = 0.74
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijgj"]
+albedo_texture = ExtResource("7_6ytau")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xs4ih"]
+material = SubResource("StandardMaterial3D_vijgj")
+size = Vector2(10, 10)
+
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_18ig4")
 
 [node name="PlayerEntity" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051, -0.47238174, 1.3020264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051, -0.63898814, 0.97517216)
 script = ExtResource("2_7s5hy")
 entity_id = "g_player"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
@@ -27,12 +60,12 @@ script = ExtResource("3_xs4ih")
 metadata/_custom_type_script = "uid://dhjrcv8mccmqo"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerEntity"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2474532, 0)
 mesh = SubResource("CapsuleMesh_k77ap")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerEntity"]
-transform = Transform3D(0.9998272, 0.0006447586, -0.01857805, 0.00072979496, 0.9972664, 0.0738864, 0.018574918, -0.0738872, 0.9970937, 0.00037759542, 1.4343956, -0.55018234)
-fov = 73.133385
+transform = Transform3D(0.9998272, 0.00064476, -0.018578064, 0.00072979496, 0.9972664, 0.07388642, 0.018574918, -0.0738872, 0.9970937, 0.00037759542, 2.6818488, -0.55018234)
+fov = 81.2
 
 [node name="CubeEntity" type="Node3D" parent="."]
 transform = Transform3D(0.7844193, 0, 0.6202309, 0, 1, 0, -0.6202309, 0, 0.7844193, 0.004561901, 0.38245416, -2.3796892)
@@ -41,11 +74,13 @@ entity_id = "g_cube"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CubeEntity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2474532, 0)
 mesh = SubResource("BoxMesh_k77ap")
 
 [node name="Area3D" type="Area3D" parent="CubeEntity"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CubeEntity/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2474532, 0)
 shape = SubResource("BoxShape3D_haeiw")
 
 [node name="InteractComponent" type="Node" parent="CubeEntity" node_paths=PackedStringArray("interact_area")]
@@ -59,11 +94,98 @@ entity_id = "g_lamp"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Entity"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.2474532, -1)
 omni_range = 7.645
 omni_attenuation = 0.99
 
 [node name="Bedroom_room" parent="." instance=ExtResource("5_7s5hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2474532, 0)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("6_xs4ih")
+
+[node name="WorldLight" type="Node3D" parent="."]
+script = ExtResource("2_7s5hy")
+entity_id = "g_worldlight"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldLight"]
+environment = SubResource("Environment_xs4ih")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldLight"]
+transform = Transform3D(0.955952, 0.041651964, 0.29055282, -0.29352313, 0.13565294, 0.9462782, 0, -0.9898805, 0.14190352, 3.1849477, 5.205765, 0.6065235)
+light_energy = 27.755
+light_indirect_energy = 11.049
+light_volumetric_fog_energy = 6.496
+light_size = 0.495
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.939
+shadow_normal_bias = 1.404
+spot_range = 8.045
+spot_attenuation = -0.14
+spot_angle = 68.03
+spot_angle_attenuation = 3.604994
+
+[node name="Sun" type="Node3D" parent="WorldLight"]
+script = ExtResource("2_7s5hy")
+entity_id = "g_sun"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLight/Sun"]
+transform = Transform3D(0.66209704, -0.71587205, 0.22170895, -0.7494181, -0.6324596, 0.19587593, 0, -0.2958416, -0.95523703, 0.01686287, 3.8838515, -5.761178)
+light_energy = 5.13
+light_indirect_energy = 1.323
+light_volumetric_fog_energy = 3.747
+light_angular_distance = 30.91
+light_specular = 0.0
+shadow_enabled = true
+shadow_normal_bias = 6.555
+shadow_transmittance_bias = 4.575
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 1.8
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldLight/Sun"]
+transform = Transform3D(0.92298883, 0.34857845, -0.16304879, 0.38482702, -0.8360484, 0.39106458, 7.3474538e-09, -0.4236937, -0.9058056, 0.2589724, 4.5729804, -3.5489779)
+light_energy = 17.325
+light_indirect_energy = 3.909
+light_volumetric_fog_energy = 0.192
+light_specular = 0.162
+shadow_enabled = true
+shadow_blur = 0.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldLight/Sun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0907273, -5.0156765)
+light_color = Color(0.9449422, 0.83123535, 0.74283254, 1)
+light_energy = 10.745
+light_size = 0.685
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 0.899
+shadow_transmittance_bias = -4.475
+shadow_blur = 0.0
+omni_range = 2.636
+omni_attenuation = -2.232
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="WorldLight/Sun"]
+transform = Transform3D(1, 0, 0, 0, 0.94739485, 0.32006732, 0, -0.32006732, 0.94739485, 0.27198124, 3.4659643, -2.857924)
+light_energy = 2.424
+light_indirect_energy = 5.525
+light_size = 0.646
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 7.404
+shadow_normal_bias = 4.838
+spot_range = 5.364
+spot_attenuation = -1.22
+spot_angle = 47.156204
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="WorldLight/Sun"]
+transform = Transform3D(0.823077, -0.42403817, -0.37780425, 0.56793, 0.6145406, 0.5475357, -1.3149489e-08, -0.6652304, 0.7466382, 0, 3.6291986, 0)
+light_energy = 4.394
+light_specular = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7511559, -7.6844797)
+mesh = SubResource("QuadMesh_xs4ih")

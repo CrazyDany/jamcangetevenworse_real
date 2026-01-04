@@ -9,7 +9,7 @@ enum CameraRotationModes {
 	FREE
 }
 
-var rotation_mode: CameraRotationModes = CameraRotationModes.FREE
+var rotation_mode: CameraRotationModes = CameraRotationModes.PARTIAL
 var target_camera_rotation: Vector3
 
 func _ready() -> void:
