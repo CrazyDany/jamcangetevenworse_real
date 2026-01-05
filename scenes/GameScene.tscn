@@ -18,7 +18,7 @@
 background_mode = 2
 background_energy_multiplier = 6.43
 ambient_light_source = 2
-ambient_light_color = Color(0.930127, 0.8409155, 0.79079556, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 1.5
 tonemap_exposure = 0.17
 sdfgi_bounce_feedback = 1.07
@@ -37,7 +37,7 @@ fog_height_density = 4.3789
 adjustment_enabled = true
 adjustment_brightness = 0.82
 adjustment_contrast = 2.09
-adjustment_saturation = 0.74
+adjustment_saturation = 0.82
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijgj"]
 albedo_texture = ExtResource("7_6ytau")
@@ -50,7 +50,7 @@ size = Vector2(10, 10)
 script = ExtResource("1_18ig4")
 
 [node name="PlayerEntity" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051, -0.63898814, 0.97517216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051, -0.63898814, 1.8287456)
 script = ExtResource("2_7s5hy")
 entity_id = "g_player"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
@@ -65,7 +65,8 @@ mesh = SubResource("CapsuleMesh_k77ap")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerEntity"]
 transform = Transform3D(0.9998272, 0.00064476, -0.018578064, 0.00072979496, 0.9972664, 0.07388642, 0.018574918, -0.0738872, 0.9970937, 0.00037759542, 2.6818488, -0.55018234)
-fov = 81.2
+fov = 54.0
+near = 0.042
 
 [node name="CubeEntity" type="Node3D" parent="."]
 transform = Transform3D(0.7844193, 0, 0.6202309, 0, 1, 0, -0.6202309, 0, 0.7844193, 0.004561901, 0.38245416, -2.3796892)
@@ -147,7 +148,7 @@ directional_shadow_max_distance = 1.8
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldLight/Sun"]
 transform = Transform3D(0.92298883, 0.34857845, -0.16304879, 0.38482702, -0.8360484, 0.39106458, 7.3474538e-09, -0.4236937, -0.9058056, 0.2589724, 4.5729804, -3.5489779)
-light_energy = 17.325
+light_energy = 8.242
 light_indirect_energy = 3.909
 light_volumetric_fog_energy = 0.192
 light_specular = 0.162
@@ -167,19 +168,6 @@ shadow_transmittance_bias = -4.475
 shadow_blur = 0.0
 omni_range = 2.636
 omni_attenuation = -2.232
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="WorldLight/Sun"]
-transform = Transform3D(1, 0, 0, 0, 0.94739485, 0.32006732, 0, -0.32006732, 0.94739485, 0.27198124, 3.4659643, -2.857924)
-light_energy = 2.424
-light_indirect_energy = 5.525
-light_size = 0.646
-light_specular = 0.0
-shadow_enabled = true
-shadow_bias = 7.404
-shadow_normal_bias = 4.838
-spot_range = 5.364
-spot_attenuation = -1.22
-spot_angle = 47.156204
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="WorldLight/Sun"]
 transform = Transform3D(0.823077, -0.42403817, -0.37780425, 0.56793, 0.6145406, 0.5475357, -1.3149489e-08, -0.6652304, 0.7466382, 0, 3.6291986, 0)
