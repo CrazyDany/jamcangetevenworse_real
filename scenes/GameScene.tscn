@@ -1,12 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://e65k65svirf1"]
+[gd_scene load_steps=16 format=3 uid="uid://e65k65svirf1"]
 
 [ext_resource type="Script" uid="uid://b45qeq6ud5wse" path="res://common/game_manager.gd" id="1_18ig4"]
 [ext_resource type="Script" uid="uid://r5w3nx2i1qty" path="res://common/entity.gd" id="2_7s5hy"]
+[ext_resource type="PackedScene" uid="uid://bhetkfukmek76" path="res://ui/ui.tscn" id="2_vijgj"]
 [ext_resource type="Script" uid="uid://dhjrcv8mccmqo" path="res://common/components/stats_component/stats_component.gd" id="3_xs4ih"]
 [ext_resource type="Script" uid="uid://mfyw85oijhdi" path="res://common/components/interact_component/interact_component.gd" id="4_6ytau"]
 [ext_resource type="PackedScene" uid="uid://drls3qeuy7oeo" path="res://assets/room/Bedroom_room.glb" id="5_7s5hy"]
 [ext_resource type="Script" uid="uid://dgrxfqxsdypxf" path="res://common/controller.gd" id="6_xs4ih"]
 [ext_resource type="Texture2D" uid="uid://ct86uqdmjvpj6" path="res://assets/room/xpbg.png" id="7_6ytau"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijgj"]
+albedo_texture = ExtResource("7_6ytau")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xs4ih"]
+material = SubResource("StandardMaterial3D_vijgj")
+size = Vector2(10, 10)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k77ap"]
 
@@ -39,15 +47,25 @@ adjustment_brightness = 0.82
 adjustment_contrast = 2.09
 adjustment_saturation = 0.82
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijgj"]
-albedo_texture = ExtResource("7_6ytau")
-
-[sub_resource type="QuadMesh" id="QuadMesh_xs4ih"]
-material = SubResource("StandardMaterial3D_vijgj")
-size = Vector2(10, 10)
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ytau"]
+size = Vector3(0.1, 0.35, 0.35)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_18ig4")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UI" instance=ExtResource("2_vijgj")]
+
+[node name="Controller" type="Node" parent="."]
+script = ExtResource("6_xs4ih")
+
+[node name="WindowsXPBG" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7511559, -7.6844797)
+mesh = SubResource("QuadMesh_xs4ih")
+
+[node name="Bedroom_room" parent="." instance=ExtResource("5_7s5hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2474532, 0)
 
 [node name="PlayerEntity" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051, -0.63898814, 1.8287456)
@@ -89,32 +107,15 @@ script = ExtResource("4_6ytau")
 interact_area = NodePath("../Area3D")
 metadata/_custom_type_script = "uid://mfyw85oijhdi"
 
-[node name="Entity" type="Node3D" parent="."]
-script = ExtResource("2_7s5hy")
-entity_id = "g_lamp"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Entity"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.2474532, -1)
-omni_range = 7.645
-omni_attenuation = 0.99
-
-[node name="Bedroom_room" parent="." instance=ExtResource("5_7s5hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2474532, 0)
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("6_xs4ih")
-
 [node name="WorldLight" type="Node3D" parent="."]
-script = ExtResource("2_7s5hy")
-entity_id = "g_worldlight"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="WorldLight"]
 environment = SubResource("Environment_xs4ih")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="WorldLight"]
+[node name="Lamp" type="SpotLight3D" parent="WorldLight"]
 transform = Transform3D(0.955952, 0.041651964, 0.29055282, -0.29352313, 0.13565294, 0.9462782, 0, -0.9898805, 0.14190352, 3.1849477, 5.205765, 0.6065235)
+visible = false
 light_energy = 27.755
 light_indirect_energy = 11.049
 light_volumetric_fog_energy = 6.496
@@ -133,7 +134,7 @@ script = ExtResource("2_7s5hy")
 entity_id = "g_sun"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLight/Sun"]
+[node name="SunLight1" type="DirectionalLight3D" parent="WorldLight/Sun"]
 transform = Transform3D(0.66209704, -0.71587205, 0.22170895, -0.7494181, -0.6324596, 0.19587593, 0, -0.2958416, -0.95523703, 0.01686287, 3.8838515, -5.761178)
 light_energy = 5.13
 light_indirect_energy = 1.323
@@ -146,7 +147,7 @@ shadow_transmittance_bias = 4.575
 directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 1.8
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldLight/Sun"]
+[node name="SunLight2" type="DirectionalLight3D" parent="WorldLight/Sun"]
 transform = Transform3D(0.92298883, 0.34857845, -0.16304879, 0.38482702, -0.8360484, 0.39106458, 7.3474538e-09, -0.4236937, -0.9058056, 0.2589724, 4.5729804, -3.5489779)
 light_energy = 8.242
 light_indirect_energy = 3.909
@@ -155,7 +156,7 @@ light_specular = 0.162
 shadow_enabled = true
 shadow_blur = 0.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="WorldLight/Sun"]
+[node name="SunOmniLight" type="OmniLight3D" parent="WorldLight/Sun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0907273, -5.0156765)
 light_color = Color(0.9449422, 0.83123535, 0.74283254, 1)
 light_energy = 10.745
@@ -169,11 +170,25 @@ shadow_blur = 0.0
 omni_range = 2.636
 omni_attenuation = -2.232
 
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="WorldLight/Sun"]
+[node name="SunLight3" type="DirectionalLight3D" parent="WorldLight/Sun"]
 transform = Transform3D(0.823077, -0.42403817, -0.37780425, 0.56793, 0.6145406, 0.5475357, -1.3149489e-08, -0.6652304, 0.7466382, 0, 3.6291986, 0)
 light_energy = 4.394
 light_specular = 0.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7511559, -7.6844797)
-mesh = SubResource("QuadMesh_xs4ih")
+[node name="SwitcherEntity" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25136, 1.7347827, 1.188731)
+script = ExtResource("2_7s5hy")
+entity_id = "g_light_switcher"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="InteractComponent" type="Node" parent="SwitcherEntity" node_paths=PackedStringArray("interact_area")]
+script = ExtResource("4_6ytau")
+interact_area = NodePath("../Area3D")
+metadata/_custom_type_script = "uid://mfyw85oijhdi"
+
+[node name="Area3D" type="Area3D" parent="SwitcherEntity"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitcherEntity/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34342408, -0.020115614, -0.014795661)
+shape = SubResource("BoxShape3D_6ytau")
+debug_color = Color(1, 1, 1, 0.41960785)

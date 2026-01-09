@@ -1,19 +1,16 @@
 class_name Entity extends Node3D
 
+## Индетификатор сущности
 @export var entity_id: String
 
-func get_components() -> Array[Component]:
-	var self_components: Array[Component]
+## Возвращает словарь всех компонентов данной сущности
+func get_components() -> Dictionary[String, Component]:
+	var self_components: Dictionary[String, Component]
 	for child_node in get_children():
 		if child_node is Component:
-			self_components.append(child_node)
+			self_components[child_node.name] = child_node
 			
 	return self_components
-
-func _ready() -> void:
-	if EntityManager.entities.has(self.entity_id):
-		push_warning("Сущность с индитификатаром " + self.entity_id + " уже существует в EntityManager")
-		return
-		
-	EntityManager.entities.get_or_add(self.entity_id, self)
-	print("Сущность " + self.entity_id + " успешно добавлена в EntityManager")
+	
+func _init() -> void:
+	EntityManager.add_entity(self)
