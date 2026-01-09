@@ -1,0 +1,6 @@
+[gd_resource type="AnimatedTexture" load_steps=2 format=3 uid="uid://byywvjjup4q7w"]
+
+[ext_resource type="Texture2D" uid="uid://b3y7c4scosrhf" path="res://content/avatars/bibik/assets/lowenergy0000.png" id="1_alfeg"]
+
+[resource]
+frame_0/texture = ExtResource("1_alfeg")

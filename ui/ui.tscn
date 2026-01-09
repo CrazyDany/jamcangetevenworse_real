@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhetkfukmek76"]
+[gd_scene load_steps=5 format=3 uid="uid://bhetkfukmek76"]
 
 [ext_resource type="Script" uid="uid://r44lqoutv8jc" path="res://ui/ui.gd" id="1_ks8t7"]
 [ext_resource type="Texture2D" uid="uid://cw1svi5omvgar" path="res://assets/loading placeholder.png" id="1_nb4k0"]
+[ext_resource type="Texture2D" uid="uid://dom06uobixt1u" path="res://assets/window.png" id="2_vkava"]
 [ext_resource type="Texture2D" uid="uid://bweulti6nol1y" path="res://content/avatars/bobik/tres/idle.tres" id="2_wl5ax"]
 
 [node name="UI" type="Control"]
@@ -37,6 +38,19 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="TextureRect2" type="TextureRect" parent="UI/MarginContainer/Container"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_vkava")
 
 [node name="TextureRect" type="TextureRect" parent="UI/MarginContainer/Container"]
 layout_mode = 1
