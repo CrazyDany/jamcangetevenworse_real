@@ -1,6 +1,0 @@
-[gd_resource type="AnimatedTexture" load_steps=2 format=3 uid="uid://bweulti6nol1y"]
-
-[ext_resource type="Texture2D" uid="uid://cikqy05ujsclp" path="res://content/avatars/bobik/assets/idle0.png" id="1_jlkof"]
-
-[resource]
-frame_0/texture = ExtResource("1_jlkof")

@@ -1,4 +1,5 @@
 {
 	"id": "empty_mod",
 	"name": "EmptyMod",
+	"scripts": ["main.gd"]
 }

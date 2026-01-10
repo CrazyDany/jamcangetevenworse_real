@@ -9,6 +9,7 @@ func _ready() -> void:
 signal on_area_input(event: InputEvent)
 
 signal on_area_mouse_click(button_mask: int)
+
 func area_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	on_area_input.emit(event)
 	if event is InputEventMouse:

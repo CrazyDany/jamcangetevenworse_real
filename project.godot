@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JamCanGetEvenWorse"
-run/main_scene="uid://e65k65svirf1"
+run/main_scene="uid://7t6b7fs4t3mo"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 EntityManager="*res://utils/entity_manager.gd"
 TimeManager="*res://utils/time_manager.gd"
-ModLoader="*res://common/mod_loader/mod_loader.gd"
+ModdingManager="*res://utils/modding_manager.gd"
 
 [display]
 

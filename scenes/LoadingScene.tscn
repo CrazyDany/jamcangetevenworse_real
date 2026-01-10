@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw7on7ea6ullh"]
+[gd_scene load_steps=3 format=3 uid="uid://7t6b7fs4t3mo"]
 
-[ext_resource type="Texture2D" uid="uid://cw1svi5omvgar" path="res://assets/loading placeholder.png" id="1_4hl00"]
-[ext_resource type="Script" uid="uid://h8tiaerotssp" path="res://scenes/loading_screen.gd" id="1_jjke5"]
+[ext_resource type="Script" uid="uid://f000ilv5dfx3" path="res://scenes/loading_scene.gd" id="1_0tklf"]
+[ext_resource type="Texture2D" uid="uid://cw1svi5omvgar" path="res://assets/loading placeholder.png" id="2_8jgqb"]
 
 [node name="LoadingScene" type="Control"]
 layout_mode = 3
@@ -10,10 +10,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jjke5")
+script = ExtResource("1_0tklf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_4hl00")
+texture = ExtResource("2_8jgqb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Loading mods..."
+horizontal_alignment = 1
