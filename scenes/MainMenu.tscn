@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmwravq1vl4kb"]
+[gd_scene load_steps=3 format=3 uid="uid://bmwravq1vl4kb"]
 
 [ext_resource type="Script" uid="uid://cphetrc0fr325" path="res://scenes/main_menu.gd" id="1_yqorp"]
+[ext_resource type="Texture2D" uid="uid://dauvgpuyplhk" path="res://assets/logo new.png" id="2_0ykhv"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,23 +27,18 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "JAM CAN GET EVEN WORSE
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Control"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.141
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.88400006
+offset_top = -0.10700226
+offset_bottom = -0.06802368
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
@@ -82,6 +78,10 @@ text = "Settings"
 layout_mode = 2
 text = "Mods"
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(108, 63)
+texture = ExtResource("2_0ykhv")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -93,7 +93,7 @@ offset_left = -40.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Game Version: 0.2d"
+text = "Game Version: 0.3d"
 
 [node name="SettingsWindow" type="Control" parent="."]
 visible = false

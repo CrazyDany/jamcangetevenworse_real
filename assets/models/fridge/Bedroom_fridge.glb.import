@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6fntoc17875c"
-path="res://.godot/imported/Bedroom_notebook.glb-547151904fa42c115330d9230e79f83d.scn"
+uid="uid://dmmfetwtwwk42"
+path="res://.godot/imported/Bedroom_fridge.glb-0ca98cf68a39856653751050086c3221.scn"
 
 [deps]
 
-source_file="res://assets/models/notebook/Bedroom_notebook.glb"
-dest_files=["res://.godot/imported/Bedroom_notebook.glb-547151904fa42c115330d9230e79f83d.scn"]
+source_file="res://assets/models/fridge/Bedroom_fridge.glb"
+dest_files=["res://.godot/imported/Bedroom_fridge.glb-0ca98cf68a39856653751050086c3221.scn"]
 
 [params]
 

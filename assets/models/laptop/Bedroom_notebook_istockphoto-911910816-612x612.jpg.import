@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bt7n2eiuqjrwf"
-path.s3tc="res://.godot/imported/Bedroom_notebook_istockphoto-911910816-612x612.jpg-ea6af988004118afdede0ea348e543b5.s3tc.ctex"
+path.s3tc="res://.godot/imported/Bedroom_notebook_istockphoto-911910816-612x612.jpg-badbf5a9f95747caf0e979723e88fb59.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/notebook/Bedroom_notebook_istockphoto-911910816-612x612.jpg"
-dest_files=["res://.godot/imported/Bedroom_notebook_istockphoto-911910816-612x612.jpg-ea6af988004118afdede0ea348e543b5.s3tc.ctex"]
+source_file="res://assets/models/laptop/Bedroom_notebook_istockphoto-911910816-612x612.jpg"
+dest_files=["res://.godot/imported/Bedroom_notebook_istockphoto-911910816-612x612.jpg-badbf5a9f95747caf0e979723e88fb59.s3tc.ctex"]
 
 [params]
 

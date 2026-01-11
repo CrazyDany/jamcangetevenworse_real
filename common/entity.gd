@@ -18,3 +18,7 @@ func get_component(component_name: String) -> Component:
 	
 func _init() -> void:
 	EntityManager.add_entity(self)
+	
+func _ready() -> void:
+	if entity_id == "":
+		push_warning(self.name + ": У сущности не указан индитификатор entity_id")

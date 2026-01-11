@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://e65k65svirf1"]
+[gd_scene load_steps=48 format=3 uid="uid://e65k65svirf1"]
 
 [ext_resource type="Script" uid="uid://b45qeq6ud5wse" path="res://common/game_manager.gd" id="1_18ig4"]
 [ext_resource type="Script" uid="uid://r5w3nx2i1qty" path="res://common/entity.gd" id="2_7s5hy"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://c0ghv4f6jroi5" path="res://common/components/stats_component/stat_dependence.gd" id="9_f2kej"]
 [ext_resource type="Script" uid="uid://b1kseto6tkqmy" path="res://content/entities/switcher_entity.gd" id="9_pynjx"]
 [ext_resource type="Curve" uid="uid://cmycfk4he4apx" path="res://common/resources/default_dependence_curve.tres" id="10_3t3mo"]
-[ext_resource type="PackedScene" uid="uid://6fntoc17875c" path="res://assets/models/notebook/Bedroom_notebook.glb" id="10_j40tv"]
+[ext_resource type="PackedScene" uid="uid://6fntoc17875c" path="res://assets/models/laptop/Bedroom_notebook.glb" id="10_j40tv"]
 [ext_resource type="PackedScene" uid="uid://qyhyuv88xypo" path="res://assets/models/tuskact4/Bedroom_tuskact4.glb" id="11_6pl24"]
 [ext_resource type="PackedScene" uid="uid://bojgrxjc5kxrj" path="res://assets/models/door/Bedroom_door.glb" id="12_6pl24"]
 [ext_resource type="PackedScene" uid="uid://c6e50am3awavd" path="res://assets/models/nighstand/Bedroom_nightstand.glb" id="13_w22tq"]
@@ -26,6 +26,13 @@
 [ext_resource type="PackedScene" uid="uid://delxejyg4jkde" path="res://assets/models/tablet/Bedroom_tablet.glb" id="21_a5tct"]
 [ext_resource type="PackedScene" uid="uid://bh7f4vtminagg" path="res://assets/models/food/pigeon/Bedroom_pigeon.glb" id="22_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://dgycnx85glhsd" path="res://assets/models/food/samsamich/Bedroom_samsamich.glb" id="23_lk0vr"]
+[ext_resource type="PackedScene" uid="uid://daiimms23l47q" path="res://assets/models/carpet/Bedroom_carpet.glb" id="27_a8ip2"]
+[ext_resource type="PackedScene" uid="uid://dmmfetwtwwk42" path="res://assets/models/fridge/Bedroom_fridge.glb" id="28_03l4r"]
+[ext_resource type="PackedScene" uid="uid://5vbt6gjk54qj" path="res://assets/models/shelf/Bedroom_shelf.glb" id="29_lpvha"]
+[ext_resource type="PackedScene" uid="uid://d0jswodt04hur" path="res://assets/models/figure/Bedroom_bibikfigure.glb" id="30_s4ole"]
+[ext_resource type="PackedScene" uid="uid://671nywhviwbd" path="res://assets/models/router/Bedroom_router.glb" id="31_x1py8"]
+[ext_resource type="PackedScene" uid="uid://b04re46blca3i" path="res://assets/models/chair/Bedroom_chair.glb" id="32_v23gc"]
+[ext_resource type="Texture2D" uid="uid://btde45ljdnl3q" path="res://assets/models/wanted/wanted.png" id="33_n7dut"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijgj"]
 albedo_texture = ExtResource("7_6ytau")
@@ -78,6 +85,8 @@ dependencies = Array[ExtResource("9_f2kej")]([SubResource("Resource_v23gc")])
 metadata/_custom_type_script = "uid://fqje8vv2chku"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k77ap"]
+radius = 0.25
+height = 1.5
 
 [sub_resource type="Environment" id="Environment_xs4ih"]
 background_mode = 2
@@ -112,6 +121,14 @@ adjustment_saturation = 0.9
 [sub_resource type="BoxShape3D" id="BoxShape3D_pynjx"]
 size = Vector3(0.1, 0.3, 0.3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_718su"]
+transparency = 1
+albedo_texture = ExtResource("33_n7dut")
+
+[sub_resource type="QuadMesh" id="QuadMesh_js75l"]
+material = SubResource("StandardMaterial3D_718su")
+size = Vector2(1.7, 2.5)
+
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_18ig4")
 
@@ -145,7 +162,7 @@ stats = Dictionary[String, ExtResource("8_lk0vr")]({
 metadata/_custom_type_script = "uid://dhjrcv8mccmqo"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerEntity"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2474532, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2185135, 1.341305)
 mesh = SubResource("CapsuleMesh_k77ap")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerEntity"]
@@ -164,7 +181,7 @@ entity_id = "g_lamp"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="Lamp" type="SpotLight3D" parent="WorldLight/LampEntity"]
-transform = Transform3D(0.9814685, 0.18699057, 0.041882537, 0.050641555, -0.4639034, 0.88443714, 0.18481085, -0.86592627, -0.46477607, 3.1849477, 4.6259255, 0.5459988)
+transform = Transform3D(0.98195654, 0.14341538, 0.12326171, -0.07071254, -0.32606134, 0.94270027, 0.17538857, -0.9344068, -0.31003678, 3.1849477, 4.575642, 0.5459988)
 light_temperature = 5510.0
 light_color = Color(1, 0.94509804, 0.9529412, 1)
 light_energy = 8.566
@@ -173,29 +190,51 @@ light_volumetric_fog_energy = 6.496
 light_size = 0.495
 light_specular = 0.05
 shadow_enabled = true
-shadow_bias = 0.939
+shadow_bias = 0.303
 shadow_normal_bias = 1.404
-spot_range = 9.456
+shadow_transmittance_bias = 2.313
+shadow_blur = 4.232
+spot_range = 7.349
 spot_attenuation = 1.67
 spot_angle = 82.01
 spot_angle_attenuation = 3.604994
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldLight/LampEntity"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.047761, 1.802623, 8.269119)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.048506, 2.4558952, 8.269119)
 light_temperature = 5227.0
-light_energy = 0.677
 light_specular = 0.0
-omni_range = 8.955
-omni_attenuation = 1.606
+shadow_enabled = true
+shadow_normal_bias = 1.404
+shadow_transmittance_bias = 4.575
+shadow_opacity = 0.55
+shadow_blur = 8.576
+omni_range = 707.086
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="WorldLight/LampEntity"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3887737, 2.4987602, 0.40863955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3887737, 2.8408642, 0.20699549)
 light_temperature = 5227.0
 light_energy = 1.646
 light_specular = 0.0
 shadow_enabled = true
-omni_range = 66.099
-omni_attenuation = 3.191
+shadow_blur = 9.182
+omni_range = 8.091
+omni_attenuation = 1.777
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="WorldLight/LampEntity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.055379, 2.9251924, -1.3588994)
+light_energy = 0.515
+light_specular = 0.0
+shadow_enabled = true
+shadow_blur = 8.273
+omni_range = 7.61
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="WorldLight/LampEntity"]
+transform = Transform3D(1, 0, 0, 0, 0.99826974, -0.05880111, 0, 0.05880111, 0.99826974, -0.6028114, 3.211935, 8.364525)
+light_energy = 1.323
+shadow_enabled = true
+shadow_blur = 7.162
+omni_range = 9.003
+omni_attenuation = 2.01
 
 [node name="Sun" type="Node3D" parent="WorldLight"]
 script = ExtResource("2_7s5hy")
@@ -203,7 +242,7 @@ entity_id = "g_sun"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="WorldLight/Sun"]
-transform = Transform3D(1, 0, 0, 0, 0.7587372, 0.6513969, 0, -0.6513969, 0.7587372, 0.15262485, 3.4104776, -5.758374)
+transform = Transform3D(1, 0, 0, 0, 0.7587372, 0.6513969, 0, -0.6513969, 0.7587372, 0.15262485, 3.4104776, -4.2278)
 light_intensity_lumens = 100.0
 light_temperature = 7502.0
 light_energy = 27.205
@@ -211,8 +250,8 @@ light_indirect_energy = 7.141
 light_volumetric_fog_energy = 5.202
 light_size = 0.212
 light_specular = 0.0
-spot_range = 8.278
-spot_attenuation = 4.03
+spot_range = 9.793
+spot_attenuation = 2.21
 spot_angle = 126.83
 
 [node name="OmniLight3D" type="OmniLight3D" parent="WorldLight/Sun"]
@@ -220,14 +259,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0923716, 3.253244, 2.366235
 light_energy = 3.909
 light_specular = 0.05
 shadow_enabled = true
-omni_range = 9.792
-omni_attenuation = 1.744
+shadow_blur = 5.242
+omni_range = 11.582
+omni_attenuation = 2.35
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldLight/Sun"]
-transform = Transform3D(0.998723, 0.004463996, 0.050325625, -0.00060577923, -0.9949594, 0.100276984, 0.050519586, -0.10017941, -0.9936861, 0, 3.3406286, 0)
+transform = Transform3D(0.9987229, 0.004463997, 0.050325617, 0.006303367, -0.9993158, -0.036450144, 0.050128464, 0.036720775, -0.99806756, 0, 3.3406286, 0)
 light_intensity_lux = 1.0
 light_energy = 13.576
 shadow_enabled = true
+shadow_blur = 2.212
 sky_mode = 1
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="WorldLight/Sun"]
@@ -236,22 +277,27 @@ light_intensity_lumens = 1012.1
 light_energy = 1.323
 light_specular = 0.0
 shadow_enabled = true
+shadow_blur = 5.343
 omni_range = 17.632
 omni_attenuation = 1.404
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="WorldLight/Sun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47303, 1.7779627, 0.044151902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3823986, 3.0018444, 0.044151902)
 light_energy = 0.677
 light_specular = 0.0
 shadow_enabled = true
-omni_range = 7.9347725
-omni_attenuation = 0.596
+shadow_blur = 5.444
+omni_range = 7.296
+omni_attenuation = 1.202
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="WorldLight/Sun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.311604, 2.9829128, 6.6860538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002928257, 2.9829128, 6.6860538)
 light_energy = 1.161
 light_specular = 0.0
 shadow_enabled = true
+shadow_bias = 0.101
+shadow_normal_bias = 0.596
+shadow_blur = 6.051
 omni_range = 8.278
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="WorldLight/Sun"]
@@ -260,6 +306,7 @@ light_temperature = 6358.0
 light_energy = 0.192
 light_specular = 0.0
 shadow_enabled = true
+shadow_blur = 6.455
 omni_range = 4.227
 omni_attenuation = -0.414
 
@@ -280,24 +327,6 @@ shadow_enabled = true
 omni_range = 1.287
 omni_attenuation = 0.777
 
-[node name="SwitcherEntity" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25136, 1.7347827, 1.188731)
-script = ExtResource("9_pynjx")
-entity_id = "g_light_switcher"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="InteractComponent" type="Node" parent="SwitcherEntity" node_paths=PackedStringArray("interact_area")]
-script = ExtResource("4_6ytau")
-interact_area = NodePath("../Area3D")
-metadata/_custom_type_script = "uid://mfyw85oijhdi"
-
-[node name="Area3D" type="Area3D" parent="SwitcherEntity"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitcherEntity/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34281564, 0, 0)
-shape = SubResource("BoxShape3D_pynjx")
-debug_color = Color(1, 1, 1, 0.41960785)
-
 [node name="SmartphoneEntity" type="Node3D" parent="."]
 transform = Transform3D(0.8203816, 0.5718165, -2.4994893e-08, 0, -4.371139e-08, -1, -0.5718165, 0.8203816, -3.586002e-08, -0.669608, 0.85257864, -1.2014916)
 script = ExtResource("2_7s5hy")
@@ -313,66 +342,6 @@ entity_id = "g_laptop"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="Bedroom_notebook" parent="LaptopEntity" instance=ExtResource("10_j40tv")]
-
-[node name="DoorEntity" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.667495, 1.5684695, -0.46196386)
-script = ExtResource("2_7s5hy")
-entity_id = "g_door"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_door" parent="DoorEntity" instance=ExtResource("12_6pl24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08555007, 0, 0)
-
-[node name="ClosetEntity" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7677023, 1.9987241, 3.7709415)
-script = ExtResource("2_7s5hy")
-entity_id = "g_closet"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_tuskact4" parent="ClosetEntity" instance=ExtResource("11_6pl24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43920612, -0.19345379, -0.85347414)
-
-[node name="NightstandEntity" type="Node3D" parent="."]
-transform = Transform3D(0.6968773, 0, -0.7171905, 0, 1, 0, 0.7171905, 0, 0.6968773, 8.665477, 0.96927667, -2.531119)
-script = ExtResource("2_7s5hy")
-entity_id = "g_nightstand"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_nightstand" parent="NightstandEntity" instance=ExtResource("13_w22tq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1511674)
-
-[node name="PlateEntity" type="Node3D" parent="."]
-transform = Transform3D(0.6968773, 0, -0.7171905, 0, 1, 0, 0.7171905, 0, 0.6968773, 8.584068, 1.6444266, -2.4503493)
-script = ExtResource("2_7s5hy")
-entity_id = "g_plate"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_plate" parent="PlateEntity" instance=ExtResource("14_e8rlm")]
-
-[node name="BedEntity" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0252314, 0.68683887, 10.5073805)
-script = ExtResource("2_7s5hy")
-entity_id = "g_bed"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_bed" parent="BedEntity" instance=ExtResource("15_qitmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22859812, 0, 0.3723396)
-
-[node name="TrashCanEntity" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9864044, 0.5957727, 8.378977)
-script = ExtResource("2_7s5hy")
-entity_id = "g_trashcan"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_trashcan" parent="TrashCanEntity" instance=ExtResource("16_kxqg4")]
-
-[node name="WaterCoolerEntity" type="Node3D" parent="."]
-transform = Transform3D(-0.6577829, 0, -0.7532076, 0, 1, 0, 0.7532076, 0, -0.6577829, 8.636721, 1.2251784, 10.383748)
-script = ExtResource("2_7s5hy")
-entity_id = "g_watercooler"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_watercooler" parent="WaterCoolerEntity" instance=ExtResource("17_21xg8")]
 
 [node name="CupEntity" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0266916, 1.1378148, -1.6166744)
@@ -399,18 +368,157 @@ metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="Bedroom_tablet" parent="TabletEntity" instance=ExtResource("21_a5tct")]
 
-[node name="PigeonEntity" type="Node3D" parent="."]
-transform = Transform3D(0.97098005, -0.2346712, 0.04612148, 0, 0.19284737, 0.98122877, -0.23916054, -0.95275354, 0.18725096, 8.381893, 1.7730265, -2.4188223)
+[node name="PlateEntity" type="Node3D" parent="."]
+transform = Transform3D(0.6968773, 0, -0.7171905, 0, 1, 0, 0.7171905, 0, 0.6968773, 8.584068, 1.6444266, -2.4503493)
 script = ExtResource("2_7s5hy")
-entity_id = "g_pigeon"
+entity_id = "g_plate"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
-[node name="Bedroom_pigeon" parent="PigeonEntity" instance=ExtResource("22_6nmf6")]
+[node name="Bedroom_plate" parent="PlateEntity" instance=ExtResource("14_e8rlm")]
 
-[node name="SamSamichEntity" type="Node3D" parent="."]
+[node name="RouterEntity" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.5931716, 11.055206)
+script = ExtResource("2_7s5hy")
+entity_id = "g_router"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_router" parent="RouterEntity" instance=ExtResource("31_x1py8")]
+
+[node name="Interior" type="Node3D" parent="."]
+
+[node name="TrashCanEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9864044, 0.5957727, 8.378977)
+script = ExtResource("2_7s5hy")
+entity_id = "g_trashcan"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_trashcan" parent="Interior/TrashCanEntity" instance=ExtResource("16_kxqg4")]
+
+[node name="ClosetEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7677023, 1.9987241, 3.7709415)
+script = ExtResource("2_7s5hy")
+entity_id = "g_closet"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_tuskact4" parent="Interior/ClosetEntity" instance=ExtResource("11_6pl24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43920612, -0.19345379, -0.85347414)
+
+[node name="NightstandEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(0.6968773, 0, -0.7171905, 0, 1, 0, 0.7171905, 0, 0.6968773, 8.665477, 0.96927667, -2.531119)
+script = ExtResource("2_7s5hy")
+entity_id = "g_nightstand"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_nightstand" parent="Interior/NightstandEntity" instance=ExtResource("13_w22tq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1511674)
+
+[node name="BedEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0252314, 0.68683887, 10.5073805)
+script = ExtResource("2_7s5hy")
+entity_id = "g_bed"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_bed" parent="Interior/BedEntity" instance=ExtResource("15_qitmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22859812, 0, 0.3723396)
+
+[node name="DoorEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.667495, 1.5684695, -0.46196386)
+script = ExtResource("2_7s5hy")
+entity_id = "g_door"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_door" parent="Interior/DoorEntity" instance=ExtResource("12_6pl24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08555007, 0, 0)
+
+[node name="WaterCoolerEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-0.6577829, 0, -0.7532076, 0, 1, 0, 0.7532076, 0, -0.6577829, 8.636721, 1.2251784, 10.383748)
+script = ExtResource("2_7s5hy")
+entity_id = "g_watercooler"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_watercooler" parent="Interior/WaterCoolerEntity" instance=ExtResource("17_21xg8")]
+
+[node name="SwitcherEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25136, 1.7347827, 1.188731)
+script = ExtResource("9_pynjx")
+entity_id = "g_light_switcher"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="InteractComponent" type="Node" parent="Interior/SwitcherEntity" node_paths=PackedStringArray("interact_area")]
+script = ExtResource("4_6ytau")
+interact_area = NodePath("../Area3D")
+metadata/_custom_type_script = "uid://mfyw85oijhdi"
+
+[node name="Area3D" type="Area3D" parent="Interior/SwitcherEntity"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/SwitcherEntity/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34281564, 0, 0)
+shape = SubResource("BoxShape3D_pynjx")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="SamSamichEntity" type="Node3D" parent="Interior"]
 transform = Transform3D(0.4748991, 0.8284217, -0.29696488, -0.2552056, 0.4525839, 0.8544226, 0.8422237, -0.3299774, 0.4263495, 8.812119, 1.8216743, -2.293025)
 script = ExtResource("2_7s5hy")
 entity_id = "g_samsamich"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
-[node name="Bedroom_samsamich" parent="SamSamichEntity" instance=ExtResource("23_lk0vr")]
+[node name="Bedroom_samsamich" parent="Interior/SamSamichEntity" instance=ExtResource("23_lk0vr")]
+
+[node name="PigeonEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(0.97098005, -0.2346712, 0.04612148, 0, 0.19284737, 0.98122877, -0.23916054, -0.95275354, 0.18725096, 8.381893, 1.7730265, -2.4188223)
+script = ExtResource("2_7s5hy")
+entity_id = "g_pigeon"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_pigeon" parent="Interior/PigeonEntity" instance=ExtResource("22_6nmf6")]
+
+[node name="CarpetEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0687041, 0.1781007, 4.165487)
+script = ExtResource("2_7s5hy")
+entity_id = "g_carpet"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_carpet" parent="Interior/CarpetEntity" instance=ExtResource("27_a8ip2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14338541)
+
+[node name="FridgeEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-1.3387059e-08, -0.30626023, -0.9519478, 1, -4.371139e-08, 0, -4.161096e-08, -0.9519478, 0.30626023, 8.210303, 1.3508422, 6.310332)
+script = ExtResource("2_7s5hy")
+entity_id = "g_fridge"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_fridge" parent="Interior/FridgeEntity" instance=ExtResource("28_03l4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2056255, 0)
+
+[node name="ShelfEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2970526, 3.3720465, 10.925143)
+script = ExtResource("2_7s5hy")
+entity_id = "g_shelf"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_shelf" parent="Interior/ShelfEntity" instance=ExtResource("29_lpvha")]
+
+[node name="FigureEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2739439, 3.70065, 10.867477)
+script = ExtResource("2_7s5hy")
+entity_id = "g_figure"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_bibikfigure" parent="Interior/FigureEntity" instance=ExtResource("30_s4ole")]
+
+[node name="ChairEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.06568712, 0.9260644, 3.124111)
+script = ExtResource("2_7s5hy")
+entity_id = "g_chairiel"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_chair" parent="Interior/ChairEntity" instance=ExtResource("32_v23gc")]
+
+[node name="WantedEntity" type="Node3D" parent="Interior"]
+transform = Transform3D(-4.371139e-08, 0.068015285, -0.99768424, 0, 0.99768424, 0.068015285, 1, 2.9730427e-09, -4.361016e-08, 9.625459, 3.1770298, 0.28018165)
+script = ExtResource("2_7s5hy")
+entity_id = "g_wanted"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interior/WantedEntity"]
+mesh = SubResource("QuadMesh_js75l")
