@@ -8,3 +8,6 @@ func _init() -> void:
 func game_ready() -> void:
 	var ui: UI = $UI/UI
 	ui.loading_screen.hide()
+	
+	TimeManager.cur_tick = 0
+	TimeManager.tick_timer.start()

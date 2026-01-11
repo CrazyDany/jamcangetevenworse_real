@@ -1,8 +1,12 @@
 extends Node
 
+## Словарь всех сущностей. Заполняется в момент иницилизации
 var entities: Dictionary[String, Entity]
+## Список иницилизирующихся сущностей
 var initializing_entities: Array[Entity]
+## Отображает иницилизированны ли все сущности
 var inited: bool = false
+## Вызывается по окончанию иницилизации всех сущностей
 signal on_inited
 
 func add_entity(entity: Entity) -> void:

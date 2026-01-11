@@ -12,5 +12,9 @@ func get_components() -> Dictionary[String, Component]:
 			
 	return self_components
 	
+## Возвращает компонент сущности по названию его ноды
+func get_component(component_name: String) -> Component:
+	return get_components().get(component_name)
+	
 func _init() -> void:
 	EntityManager.add_entity(self)

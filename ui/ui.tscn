@@ -53,6 +53,11 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("2_vkava")
 
+[node name="StatsLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="LoadingScreen" type="Control" parent="."]
 visible = false
 layout_mode = 1

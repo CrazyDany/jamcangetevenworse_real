@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://e65k65svirf1"]
+[gd_scene load_steps=39 format=3 uid="uid://e65k65svirf1"]
 
 [ext_resource type="Script" uid="uid://b45qeq6ud5wse" path="res://common/game_manager.gd" id="1_18ig4"]
 [ext_resource type="Script" uid="uid://r5w3nx2i1qty" path="res://common/entity.gd" id="2_7s5hy"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://drls3qeuy7oeo" path="res://assets/room/Bedroom_room.glb" id="5_7s5hy"]
 [ext_resource type="Script" uid="uid://dgrxfqxsdypxf" path="res://common/controller.gd" id="6_xs4ih"]
 [ext_resource type="Texture2D" uid="uid://ct86uqdmjvpj6" path="res://assets/room/xpbg.png" id="7_6ytau"]
+[ext_resource type="Script" uid="uid://fqje8vv2chku" path="res://common/components/stats_component/stat.gd" id="8_lk0vr"]
+[ext_resource type="Script" uid="uid://c0ghv4f6jroi5" path="res://common/components/stats_component/stat_dependence.gd" id="9_f2kej"]
 [ext_resource type="Script" uid="uid://b1kseto6tkqmy" path="res://content/entities/switcher_entity.gd" id="9_pynjx"]
+[ext_resource type="Curve" uid="uid://cmycfk4he4apx" path="res://common/resources/default_dependence_curve.tres" id="10_3t3mo"]
 [ext_resource type="PackedScene" uid="uid://6fntoc17875c" path="res://assets/models/notebook/Bedroom_notebook.glb" id="10_j40tv"]
 [ext_resource type="PackedScene" uid="uid://qyhyuv88xypo" path="res://assets/models/tuskact4/Bedroom_tuskact4.glb" id="11_6pl24"]
 [ext_resource type="PackedScene" uid="uid://bojgrxjc5kxrj" path="res://assets/models/door/Bedroom_door.glb" id="12_6pl24"]
@@ -30,6 +33,49 @@ albedo_texture = ExtResource("7_6ytau")
 [sub_resource type="QuadMesh" id="QuadMesh_xs4ih"]
 material = SubResource("StandardMaterial3D_vijgj")
 size = Vector2(10, 10)
+
+[sub_resource type="Resource" id="Resource_a8ip2"]
+script = ExtResource("9_f2kej")
+entity_id = "g_player"
+stat_dependence = "satiety"
+dependence_curve = ExtResource("10_3t3mo")
+metadata/_custom_type_script = "uid://c0ghv4f6jroi5"
+
+[sub_resource type="Resource" id="Resource_03l4r"]
+script = ExtResource("9_f2kej")
+entity_id = "g_player"
+stat_dependence = "hydration"
+dependence_curve = ExtResource("10_3t3mo")
+metadata/_custom_type_script = "uid://c0ghv4f6jroi5"
+
+[sub_resource type="Resource" id="Resource_f2kej"]
+script = ExtResource("8_lk0vr")
+dependencies = Array[ExtResource("9_f2kej")]([SubResource("Resource_a8ip2"), SubResource("Resource_03l4r")])
+metadata/_custom_type_script = "uid://fqje8vv2chku"
+
+[sub_resource type="Resource" id="Resource_s4ole"]
+script = ExtResource("9_f2kej")
+entity_id = "g_player"
+stat_dependence = "satiety"
+dependence_curve = ExtResource("10_3t3mo")
+metadata/_custom_type_script = "uid://c0ghv4f6jroi5"
+
+[sub_resource type="Resource" id="Resource_lk0vr"]
+script = ExtResource("8_lk0vr")
+dependencies = Array[ExtResource("9_f2kej")]([SubResource("Resource_s4ole")])
+metadata/_custom_type_script = "uid://fqje8vv2chku"
+
+[sub_resource type="Resource" id="Resource_v23gc"]
+script = ExtResource("9_f2kej")
+entity_id = "g_player"
+stat_dependence = "hydration"
+dependence_curve = ExtResource("10_3t3mo")
+metadata/_custom_type_script = "uid://c0ghv4f6jroi5"
+
+[sub_resource type="Resource" id="Resource_3t3mo"]
+script = ExtResource("8_lk0vr")
+dependencies = Array[ExtResource("9_f2kej")]([SubResource("Resource_v23gc")])
+metadata/_custom_type_script = "uid://fqje8vv2chku"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k77ap"]
 
@@ -91,6 +137,11 @@ metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="StatsComponent" type="Node" parent="PlayerEntity"]
 script = ExtResource("3_xs4ih")
+stats = Dictionary[String, ExtResource("8_lk0vr")]({
+"energy": SubResource("Resource_f2kej"),
+"hydration": SubResource("Resource_lk0vr"),
+"satiety": SubResource("Resource_3t3mo")
+})
 metadata/_custom_type_script = "uid://dhjrcv8mccmqo"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerEntity"]
@@ -247,6 +298,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34281564, 0, 0)
 shape = SubResource("BoxShape3D_pynjx")
 debug_color = Color(1, 1, 1, 0.41960785)
 
+[node name="SmartphoneEntity" type="Node3D" parent="."]
+transform = Transform3D(0.8203816, 0.5718165, -2.4994893e-08, 0, -4.371139e-08, -1, -0.5718165, 0.8203816, -3.586002e-08, -0.669608, 0.85257864, -1.2014916)
+script = ExtResource("2_7s5hy")
+entity_id = "g_smartphone"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_smartphone" parent="SmartphoneEntity" instance=ExtResource("20_2gh7q")]
+
 [node name="LaptopEntity" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1503189, -2.0002875)
 script = ExtResource("2_7s5hy")
@@ -254,15 +313,6 @@ entity_id = "g_laptop"
 metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="Bedroom_notebook" parent="LaptopEntity" instance=ExtResource("10_j40tv")]
-
-[node name="ClosetEntity" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7677023, 1.9987241, 3.7709415)
-script = ExtResource("2_7s5hy")
-entity_id = "g_closet"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_tuskact4" parent="ClosetEntity" instance=ExtResource("11_6pl24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43920612, -0.19345379, -0.85347414)
 
 [node name="DoorEntity" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.667495, 1.5684695, -0.46196386)
@@ -272,6 +322,15 @@ metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="Bedroom_door" parent="DoorEntity" instance=ExtResource("12_6pl24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08555007, 0, 0)
+
+[node name="ClosetEntity" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7677023, 1.9987241, 3.7709415)
+script = ExtResource("2_7s5hy")
+entity_id = "g_closet"
+metadata/_custom_type_script = "uid://r5w3nx2i1qty"
+
+[node name="Bedroom_tuskact4" parent="ClosetEntity" instance=ExtResource("11_6pl24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43920612, -0.19345379, -0.85347414)
 
 [node name="NightstandEntity" type="Node3D" parent="."]
 transform = Transform3D(0.6968773, 0, -0.7171905, 0, 1, 0, 0.7171905, 0, 0.6968773, 8.665477, 0.96927667, -2.531119)
@@ -331,14 +390,6 @@ metadata/_custom_type_script = "uid://r5w3nx2i1qty"
 
 [node name="Bedroom_mouse" parent="MouseEntity" instance=ExtResource("19_2gh7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0105438, 0.043577433, 1.3615041)
-
-[node name="SmartphoneEntity" type="Node3D" parent="."]
-transform = Transform3D(0.8203816, 0.5718165, -2.4994893e-08, 0, -4.371139e-08, -1, -0.5718165, 0.8203816, -3.586002e-08, -0.669608, 0.85257864, -1.2014916)
-script = ExtResource("2_7s5hy")
-entity_id = "g_smartphone"
-metadata/_custom_type_script = "uid://r5w3nx2i1qty"
-
-[node name="Bedroom_smartphone" parent="SmartphoneEntity" instance=ExtResource("20_2gh7q")]
 
 [node name="TabletEntity" type="Node3D" parent="."]
 transform = Transform3D(0.984491, 0.17543544, 7.668527e-09, 0, -4.371139e-08, 1, 0.17543544, -0.984491, -4.3033467e-08, 0.5825412, 0.8555106, -1.2536805)
