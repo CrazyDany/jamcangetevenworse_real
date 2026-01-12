@@ -18,7 +18,8 @@ func on_inited() -> void:
 func on_tick(cur_tick: int) -> void:
 	if player_stats_component and stats_label:
 		stats_label.text = ""
-		for stat_name in player_stats_component.stats.keys():
+		for stat_name: String in player_stats_component.stats.keys():
 			var stat: BaseStat = player_stats_component.stats.get(stat_name)
-			stats_label.text += stat_name + ": " + str(stat.cur_value) + "/" + str(stat.max_value)
+			var loc_stat_name: String = tr(stat_name.to_upper())
+			stats_label.text += loc_stat_name + ": " + str(stat.cur_value) + "/" + str(stat.max_value)
 			stats_label.text += "\n"

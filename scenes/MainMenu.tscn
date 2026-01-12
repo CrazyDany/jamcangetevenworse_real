@@ -27,6 +27,10 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_0ykhv")
+
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -78,10 +82,6 @@ text = "Settings"
 layout_mode = 2
 text = "Mods"
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
-position = Vector2(108, 63)
-texture = ExtResource("2_0ykhv")
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -93,7 +93,7 @@ offset_left = -40.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Game Version: 0.3d"
+text = "Game Version: 0.4d"
 
 [node name="SettingsWindow" type="Control" parent="."]
 visible = false
@@ -129,41 +129,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="SettingsWindow/Control/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/VBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 51.0
-grow_horizontal = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ColorRect" type="ColorRect" parent="SettingsWindow/Control/VBoxContainer/Control/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="SettingsWindow/Control/VBoxContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0.22670749, 0.22670749, 0.22670746, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/VBoxContainer/Control/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/VBoxContainer/Control/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="CloseButton" type="Button" parent="SettingsWindow/Control/VBoxContainer/Control/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="SettingsWindow/Control/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "X"
 
+[node name="MarginContainer2" type="MarginContainer" parent="SettingsWindow/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="SettingsWindow/Control/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/VBoxContainer/MarginContainer2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/VBoxContainer/MarginContainer2/Control/HBoxContainer"]
+layout_mode = 2
+text = "Язык"
+
+[node name="LangOptionButton" type="OptionButton" parent="SettingsWindow/Control/VBoxContainer/MarginContainer2/Control/HBoxContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Control/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="SettingsWindow/Control/VBoxContainer/Control/MarginContainer/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="SettingsWindow/Control/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="item_selected" from="SettingsWindow/Control/VBoxContainer/MarginContainer2/Control/HBoxContainer/LangOptionButton" to="." method="_on_lang_option_button_item_selected"]

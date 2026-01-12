@@ -1,0 +1,41 @@
+{
+	"name": "English",
+
+	"loc_text": {
+		
+		"date_and_time": {
+			"day": ["Day", "Day", "Day", "Day", "Day", "Day"],
+			"time": ["Time", "Time", "Time", "Time", "Time", "Time"],
+			"weekdays": {
+				"1": ["Monday", "_", "_", "_", "_", "_"],
+				"2": ["Tuesday", "_", "_", "_", "_", "_"],
+				"3": ["Wednesday", "_", "_", "_", "_", "_"],
+				"4": ["Thursday", "_", "_", "_", "_", "_"],
+				"5": ["Friday", "_", "_", "_", "_", "_"],
+				"6": ["Saturday", "_", "_", "_", "_", "_"],
+				"7": ["Sunday", "_", "_", "_", "_", "_"]
+			},
+			"months": {
+				"1": ["January", "_", "_", "_", "_", "_"],
+				"2": ["February", "_", "_", "_", "_", "_"],
+				"3": ["March", "_", "_", "_", "_", "_"],
+				"4": ["April", "_", "_", "_", "_", "_"],
+				"5": ["May", "_", "_", "_", "_", "_"],
+				"6": ["June", "_", "_", "_", "_", "_"],
+				"7": ["July", "_", "_", "_", "_", "_"],
+				"8": ["August", "_", "_", "_", "_", "_"],
+				"9": ["September", "_", "_", "_", "_", "_"],
+				"10": ["October", "_", "_", "_", "_", "_"],
+				"11": ["November", "_", "_", "_", "_", "_"],
+				"12": ["December", "_", "_", "_", "_", "_"],
+			},
+		},
+		
+		"player_stats": {
+			"energy": ["Energy", "Energy", "Energy", "Energy", "Energy", "Energy"],
+			"hydration": ["Hydration", "Hydration", "Hydration", "Hydration", "Hydration", "Hydration"],
+			"satiety": ["Satiety", "Satiety", "Satiety", "Satiety", "Satiety", "Satiety"],
+		}
+		
+	}
+}
